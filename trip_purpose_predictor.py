@@ -38,6 +38,8 @@ if st.button('Predict Purpose'):
     sorted_predictions = sorted(zip(clf.classes_, prediction_probs), key=lambda x: x[1], reverse=True)
     # Filter out predictions with zero probability
     filtered_predictions = [(purpose, probability) for purpose, probability in sorted_predictions if probability > 0.0]
+    if not filtered_predictions:
+        return [("unknown purpose", 1.0)]  # Assigning 1.0 probability for unknown purpose
     
     st.write("Predicted purposes (from most to least probable):")
     for purpose, probability in filtered_predictions:
