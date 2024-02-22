@@ -43,3 +43,6 @@ if st.button('Predict Purpose'):
         st.write("Predicted purposes (from most to least probable):")
         for purpose, probability in filtered_predictions:
             st.write(f"{purpose}: {probability:.2f}")
+
+    else:
+        st.error("Please choose start and end locaton properly")
