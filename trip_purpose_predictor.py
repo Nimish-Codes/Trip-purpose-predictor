@@ -4,7 +4,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.feature_extraction import DictVectorizer
 
 # Load the dataset
-data = pd.read_csv('/content/drive/MyDrive/nk_projecs./UberDataset.csv')
+data = pd.read_csv('UberDataset.csv')
 
 # Drop rows with missing values
 data.dropna(inplace=True)
@@ -22,7 +22,7 @@ clf = DecisionTreeClassifier()
 clf.fit(X_encoded, y)
 
 # Streamlit app
-st.title('Uber Trip Purpose Prediction')
+st.title('Trip Purpose Prediction')
 
 # Dropdown menu for selecting start location
 start_location = st.selectbox('Select Start Location', sorted(data['START'].unique()))
