@@ -31,8 +31,8 @@ start_location = st.selectbox('Select Start Location', sorted(data['START'].uniq
 stop_location = st.selectbox('Select Stop Location', sorted(data['STOP'].unique()))
 
 # Predict purpose when user selects start and stop locations
-if st.button('Predict Purpose'):
-    if start_location and stop_location is not None:
+if start_location != '' and stop_location != '':
+    if st.button('Predict Purpose'):
         input_data = vec.transform([{'START': start_location, 'STOP': stop_location}])
         prediction_probs = clf.predict_proba(input_data)[0]
         # Zip purpose labels and prediction probabilities and sort by probabilities in descending order
@@ -44,5 +44,5 @@ if st.button('Predict Purpose'):
         for purpose, probability in filtered_predictions:
             st.write(f"{purpose}: {probability:.2f}")
 
-    else:
-        st.error("Please choose start and end locaton properly")
+else:
+    st.error("Please select both start and stop locations.")
